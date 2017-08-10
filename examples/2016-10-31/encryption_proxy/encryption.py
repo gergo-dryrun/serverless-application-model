@@ -21,7 +21,7 @@ def encrypt(key, message):
     '''
     try:
         ret = kms.encrypt(KeyId=key, Plaintext=message)
-        encrypted_data = base64.encodestring(ret.get('CiphertextBlob'))
+        encrypted_data = base64.b64encode(ret.get('CiphertextBlob'))
     except Exception as e:
         # returns http 500 back to user and log error details in Cloudwatch Logs
         raise Exception("Unable to encrypt data: ", e)

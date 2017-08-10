@@ -20,7 +20,7 @@ def decrypt(message):
     '''
     try:
         ret = kms.decrypt(
-            CiphertextBlob=base64.decodestring(message))
+            CiphertextBlob=base64.b64decode(message))
         decrypted_data = ret.get('Plaintext')
     except Exception as e:
         # returns http 500 back to user and log error details in Cloudwatch Logs
